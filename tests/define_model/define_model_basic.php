@@ -1,21 +1,7 @@
-Models for writing conditions as "named protocols"
+<?php
+require_once __DIR__."/../common.php";
 
-<!-- Still abstract -->
-
-Example
-
-function($foo){
-if($foo=="bar"){
-  return("baz");
-}
-else{
-  return("qux");
-}
-}
-
-becomes
-
-$protocol=new defineModel();
+$protocol=new ProtocolModel\core\defineModel();
 $protocol->new_case("myFoo");
 $protocol->new_when("myFoo",["foo"=>"bar"],"baz");
 $protocol->new_else("myFoo","qux");
@@ -23,29 +9,23 @@ $protocol->new_else("myFoo","qux");
 $foo="bar";
 //prints "baz"
 echo($protocol->case("myFoo")->when(["foo"=>$foo]));
+echo("\n");
 
-$foo="not_bar";
+$foo="barr";
 //prints "qux"
 echo($protocol->case("myFoo")->when(["foo"=>$foo]));
+echo("\n");
+echo("\n");
 
-//can also pass callback with new_then (default is function($a){return($a)}. if passed empty input, it resets)
+//if callback passed to new_then, it calls callback with result as input, instead of return
 $protocol->new_then("myFoo",function($boo){if($boo=="baz"){echo("this is baz\n");}else{echo("this is qux\n");}return("called");});
 
 $foo="bar";
 //prints "this is baz\ncalled"
 echo($protocol->case("myFoo")->when(["foo"=>$foo]));
+echo("\n");
 
 $foo="not_bar";
 //prints "this is qux\ncalled"
 echo($protocol->case("myFoo")->when(["foo"=>$foo]));
-
-
-//new case declaration can be omitted
-$protocol->new_when("myFoo",["foo"=>"bar"],"baz");
-$protocol->new_else("myFoo","qux");
-
-is equivalent to this
-
-$protocol->new_case("myFoo");
-$protocol->new_when("myFoo",["foo"=>"bar"],"baz");
-$protocol->new_else("myFoo","qux");
+echo("\n");

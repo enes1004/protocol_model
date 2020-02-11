@@ -1,0 +1,27 @@
+can use session to save executed protocol results
+
+$p=new defineModel();
+$p->new_when("a",["foo"=>"bar"],"baz");
+$p->save_result_to_sess("a",["foo"=>"foo"]);
+
+will save "baz" on $_SESSION["protocol_mem"]["a"]
+
+which can be used by
+
+$p2=new defineModel();
+$baz=$p2->load_result_from_sess("a");
+
+//prints baz
+echo($baz);
+
+//also can save the case as well
+
+$p->new_when("a",["foo"=>"bar"],"baz");
+$p->save_case_to_sess("a");
+
+$p2=new defineModel();
+$p2->load_case_from_sess("a");
+$baz=$p2->case("a")->when(["foo"=>"bar"]);
+
+//prints baz
+echo($baz);
