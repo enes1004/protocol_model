@@ -8,12 +8,12 @@ $protocol->new_else("myFoo","qux");
 
 $foo="bar";
 //prints "baz"
-echo($protocol->case("myFoo")->when(["foo"=>$foo]));
+echo($protocol->case("myFoo")->when(["foo"=>$foo])->get());
 echo("\n");
 
 $foo="barr";
 //prints "qux"
-echo($protocol->case("myFoo")->when(["foo"=>$foo]));
+echo($protocol->case("myFoo")->when(["foo"=>$foo])->get());
 echo("\n");
 echo("\n");
 
@@ -22,10 +22,10 @@ $protocol->new_then("myFoo",function($boo){if($boo=="baz"){echo("this is baz\n")
 
 $foo="bar";
 //prints "this is baz\ncalled"
-echo($protocol->case("myFoo")->when(["foo"=>$foo]));
+echo($protocol->case("myFoo")->when(["foo"=>$foo])->get());
 echo("\n");
 
 $foo="not_bar";
 //prints "this is qux\ncalled"
-echo($protocol->case("myFoo")->when(["foo"=>$foo]));
+echo($protocol->case("myFoo")->when(["foo"=>$foo])->get());
 echo("\n");

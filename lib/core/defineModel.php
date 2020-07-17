@@ -37,7 +37,7 @@ class defineModel{
 
   }
   public function save_result_to_sess($case_name,$cond){
-    $to_sess=$this->protocols[$case_name]->when($cond);
+    $to_sess=$this->protocols[$case_name]->when($cond)->get();
     $this->save_to_sess($case_name,$to_sess,"results");
   }
   public function load_result_from_sess($case_name){

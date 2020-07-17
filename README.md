@@ -39,13 +39,13 @@ $foo="bar";
 
 //prints "baz"
 
-echo($protocol->case("myFoo")->when(["foo"=>$foo]));
+echo($protocol->case("myFoo")->when(["foo"=>$foo])->get());
 
 $foo="not_bar";
 
 //prints "qux"
 
-echo($protocol->case("myFoo")->when(["foo"=>$foo]));
+echo($protocol->case("myFoo")->when(["foo"=>$foo])->get());
 ```
 
 can also pass callback with new_then (default is function($a){return($a)}. if passed empty input, it resets)
@@ -58,14 +58,14 @@ $foo="bar";
 
 //prints "this is baz\ncalled"
 
-echo($protocol->case("myFoo")->when(["foo"=>$foo]));
+echo($protocol->case("myFoo")->when(["foo"=>$foo])->get());
 
 
 $foo="not_bar";
 
 //prints "this is qux\ncalled"
 
-echo($protocol->case("myFoo")->when(["foo"=>$foo]));
+echo($protocol->case("myFoo")->when(["foo"=>$foo])->get());
 
 ```
 

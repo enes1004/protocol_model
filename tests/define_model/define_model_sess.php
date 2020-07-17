@@ -6,24 +6,24 @@ $protocol->new_when("myFoo",["foo"=>"bar"],"baz");
 $protocol->new_else("myFoo","qux");
 $protocol->save_result_to_sess("myFoo",["foo"=>"bar"]);
 
-//prints baz
+echo("//prints baz\n");
 echo($protocol2->load_result_from_sess("myFoo"));
 echo("\n");
 
 $protocol->save_result_to_sess("myFoo",["foo"=>"not_bar"]);
-//prints qux
+echo("//prints qux\n");
 echo($protocol2->load_result_from_sess("myFoo"));
 echo("\n");
 
 
 $protocol->new_then("myFoo",function($boo){if($boo=="baz"){echo("this is baz\n");}else{echo("this is qux\n");}return("called");});
 $protocol->save_result_to_sess("myFoo",["foo"=>"bar"]);
-//prints this is baz\ncalled
+echo("//prints this is baz\ncalled\n");
 echo($protocol2->load_result_from_sess("myFoo"));
 echo("\n");
 
 $protocol->save_result_to_sess("myFoo",["foo"=>"not_bar"]);
-//prints this is qux\ncalled
+echo("//prints this is qux\ncalled\n");
 echo($protocol2->load_result_from_sess("myFoo"));
 echo("\n");
 
@@ -35,10 +35,10 @@ $protocol->save_case_to_sess("myFoo2");
 
 $protocol2->load_case_from_sess("myFoo2");
 
-//prints baz
-echo($protocol2->case("myFoo2")->when(["foo"=>"bar"]));
+echo("//prints baz\n");
+echo($protocol2->case("myFoo2")->when(["foo"=>"bar"])->get());
 echo("\n");
 
-//prints qux
-echo($protocol2->case("myFoo2")->when(["foo"=>"not_bar"]));
+echo("//prints qux\n");
+echo($protocol2->case("myFoo2")->when(["foo"=>"not_bar"])->get());
 echo("\n");

@@ -18,8 +18,10 @@ class caseModel{
     $this->then_internal=$callback->bindTo($this);
   }
   public function then($a){
-    return($this->then_internal->call($this,$a));
+    $this->res=$this->then_internal->call($this,$a);
+    return($this);
   }
+  public function get(){return($this->res);}
   public function when($inputs=[]){
     foreach ($this->conds as $cond) {
       $should_out=true;
@@ -28,9 +30,10 @@ class caseModel{
         if($inputs[$key]!=$value){$should_out=false;}
       } else{$should_out=false;}
       }
-      if($should_out){return($this->then($cond["out"]));}
+      if($should_out){$this->then($cond["out"]);return($this);}
     }
-    return($this->then($this->else));
+    $this->then($this->else);
+    return($this);
   }
   public function parse_to_save(){
     $conds=$this->conds;

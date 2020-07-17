@@ -17,36 +17,36 @@ $protocol2->new_else("myFoo","qux");
 $foo="bar";
 $foo2="bar2";
 echo("prints baz\n");
-echo($protocol->case("myFoo")->when(["foo"=>$foo,"foo2"=>$foo2]));
+echo($protocol->case("myFoo")->when(["foo"=>$foo,"foo2"=>$foo2])->get());
 echo("\n");
 echo("prints baz\n");
-echo($protocol2->case("myFoo")->when(["foo"=>$foo,"foo2"=>$foo2]));
+echo($protocol2->case("myFoo")->when(["foo"=>$foo,"foo2"=>$foo2])->get());
 echo("\n");
 
 $foo="bar";
 $foo2="bar";
 echo("prints qux\n");
-echo($protocol->case("myFoo")->when(["foo"=>$foo,"foo2"=>$foo2]));
+echo($protocol->case("myFoo")->when(["foo"=>$foo,"foo2"=>$foo2])->get());
 echo("\n");
 echo("prints baz\n");
-echo($protocol2->case("myFoo")->when(["foo"=>$foo,"foo2"=>$foo2]));
+echo($protocol2->case("myFoo")->when(["foo"=>$foo,"foo2"=>$foo2])->get());
 echo("\n");
 
 
 $foo="bar";
 echo("prints qux\n");
-echo($protocol->case("myFoo")->when(["foo"=>$foo]));
+echo($protocol->case("myFoo")->when(["foo"=>$foo])->get());
 echo("\n");
 echo("prints baz\n");
-echo($protocol2->case("myFoo")->when(["foo"=>$foo]));
+echo($protocol2->case("myFoo")->when(["foo"=>$foo])->get());
 echo("\n");
 
 
 $foo="barr";
 $foo2="bar2";
 echo("prints qux\n");
-echo($protocol->case("myFoo")->when(["foo"=>$foo,"foo2"=>$foo2]));
+echo($protocol->case("myFoo")->when(["foo"=>$foo,"foo2"=>$foo2])->get());
 echo("\n");
 echo("prints baz2\n");
-echo($protocol2->case("myFoo")->when(["foo"=>$foo,"foo2"=>$foo2]));
+echo($protocol2->case("myFoo")->when(["foo"=>$foo,"foo2"=>$foo2])->get());
 echo("\n");
